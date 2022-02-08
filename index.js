@@ -8,7 +8,7 @@ const vm = new Vue({
     el:"#app",
     data:{
         msg:"Hello mx",
-        name:"Hello mx"
+        name:"Hello name"
     },
     methods: {
         hander(){
@@ -16,4 +16,5 @@ const vm = new Vue({
         }
     },
 })
+
 console.log(vm);

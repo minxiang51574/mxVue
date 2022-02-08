@@ -3,6 +3,8 @@
  * @Date: 2022-01-18 13:12:27
  * @Description: Vue构造函数 配置参数等
  */
+import Observer from "./observer.js";
+import Complier from "./compiler.js";
 export default class Vue {
     constructor (options = {}){
         this.$options = options
@@ -10,8 +12,16 @@ export default class Vue {
         this.$methods = options.methods
 
         this.initRootElement(options)
+
         // 利用Object.defineProperty将data里的属性注入到vue实例中
         this._proxyData(this.$data)
+
+        // 实例化observer对象 监听数据变化
+        new Observer(this.$data)
+        // 实例化Complier对象 解析指令和模板
+        new Complier(this)
+
+
     }
     /**
      * 获取根元素 并存储到vue实现 检查传入的el是否合规
