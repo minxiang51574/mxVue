@@ -11,6 +11,7 @@ export default class Vue {
         this.$data = options.data
         this.$methods = options.methods
 
+        // 初始化el 对传进来的根元素进行判断
         this.initRootElement(options)
 
         // 利用Object.defineProperty将data里的属性注入到vue实例中
@@ -18,6 +19,7 @@ export default class Vue {
 
         // 实例化observer对象 监听数据变化
         new Observer(this.$data)
+
         // 实例化Complier对象 解析指令和模板
         new Complier(this)
 
@@ -40,9 +42,12 @@ export default class Vue {
     }
 
     _proxyData(data){
+         //通过Object.defineProperty将data里的属性绑定到vue实例上
         Object.keys(data).forEach(key=>{
             Object.defineProperty(this,key,{
+                //表示可以被枚举，也就是可以被循环
                 enumerable:true,
+                //表示可以进行相应配置
                 configurable:true,
                 get(){
                     return data[key]
@@ -56,4 +61,5 @@ export default class Vue {
             })
         })
     }
+    //_proxyData函数用于将属性绑定在vue实例上，而不是用于进行依赖的收集和派发更新，所以不用递归的对每一个值进行劫持
 }

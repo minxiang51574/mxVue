@@ -17,10 +17,14 @@ export default class Dep {
     }
    /** 发送通知 */
     notify(){
+        //遍历subs数组，调用每一个watcher的updatae方法
         this.subs.forEach(watcher=>{
             watcher.unpdate()
         })
     }
 }
 //dep类在什么时候实例化？在哪里addSubs？
+// => Observer遍历各个属性的时候实例化
+// => get 收集依赖 addSubs
 //dep类在什么时候调用notify方法？
+// => set 派发更新 notify

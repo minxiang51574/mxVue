@@ -1,7 +1,8 @@
 /*
  * @Author: Mx
  * @Date: 2022-01-31 09:55:30
- * @Description: 观察者Watcher
+ * @Description: 
+ * Watcher 订阅者， 作为连接 Observer 和 Compile 的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数
  */
 import Dep from "./dep.js";
 
@@ -12,14 +13,16 @@ export default class Watcher {
      * @param {*} key data属性名
      * @param {*} callback 回调函数
      */    
-    constructor(vm,key,callback){
+    constructor(vm,key,cb){
         this.vm = vm
         this.key = key
-        this.callback = callback
+        this.callback = cb
 
         //为什么要往dep.target上添加watcher实例
         Dep.target = this;
 
+        //拿到旧值
+        //同时注意一点，在这里会触发变量的get方法
         this.oldValue = vm[key]
 
         Dep.target = null;
@@ -30,7 +33,7 @@ export default class Watcher {
         if(this.oldValue === newValue){
             return
         }
-        this.callback()
+        this.cb(newValue)
     }
 
 }

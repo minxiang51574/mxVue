@@ -8,13 +8,13 @@ const vm = new Vue({
     el:"#app",
     data:{
         msg:"Hello mx",
-        name:"Hello name"
+        testHtml:"<ul><li>这是什么</li></ul>",
+        number:100,
     },
     methods: {
-        hander(){
+        btnFn(){
             alert(111)
         }
     },
 })
-
 console.log(vm);

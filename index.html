@@ -14,9 +14,27 @@
    
 </head>
 <body>
-    <h1>222</h1>
     <div id="app">
-        {{name}}
+        <h1>模板表达式</h1>
+        <h3> {{msg}}</h3>
+        <br>
+
+        <h1>v-text测试</h1>
+        <div v-text="msg"></div>
+        <br>
+
+        <h1>v-html测试</h1>
+        <div v-html="testHtml"></div>
+        <ul>
+            <li>11</li>
+        </ul>
+        <br>
+
+        <h1>v-model测试</h1>
+        <input type="text" v-model="number">
+        <button v-on:click="btnFn">按钮</button>
+
+       
     </div>
     <script src="./index.js" type="module"></script>
 </body>
