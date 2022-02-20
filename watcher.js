@@ -28,7 +28,7 @@ export default class Watcher {
         Dep.target = null;
     }
     /**数据发生变化更新视图 */
-    updated() {
+    update() {
         let newValue = this.vm[this.key]
         if(this.oldValue === newValue){
             return

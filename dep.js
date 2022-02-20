@@ -19,7 +19,7 @@ export default class Dep {
     notify(){
         //遍历subs数组，调用每一个watcher的updatae方法
         this.subs.forEach(watcher=>{
-            watcher.unpdate()
+            watcher.update()
         })
     }
 }
