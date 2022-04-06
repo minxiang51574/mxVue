@@ -13,7 +13,7 @@ const vm = new Vue({
     },
     methods: {
         btnFn(){
-            alert(111)
+            alert(vm.number)
         }
     },
 })
