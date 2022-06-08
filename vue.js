@@ -61,5 +61,7 @@ export default class Vue {
             })
         })
     }
+    console.log('1111');
+    
     //_proxyData函数用于将属性绑定在vue实例上，而不是用于进行依赖的收集和派发更新，所以不用递归的对每一个值进行劫持
 }
