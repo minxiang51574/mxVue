@@ -58,9 +58,7 @@ export default class Compiler{
         if(node.attributes.length > 0){
             Array.from(node.attributes).forEach(attr=>{
                 //属性名
-                console.log('attrObj',attr);
                 const attrName = attr.name
-                console.log('attrName',attrName);
                 //判断是否是v-开头
                 if(this.isVStartsWith(attrName)){
                     //特殊判断是：号 例如v-on:click
